@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Solicita Presupuesto</title>
+  <link rel="stylesheet" href="{% static 'main/css/presupuesto.css' %}" />
+</head>
+<body>
+<header>
+  <div class="header-container">
+    <a href="{% url 'inicio' %}" aria-label="Inicio">
+      <svg id="Capa_1" class="rotate-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.43 18.11" role="img" aria-hidden="true" focusable="false">
+        <path class="cls-1" d="M17.43,8.88l-2.76.72c-2.81.74-4.95,3.04-5.48,5.9l-.48,2.62-.48-2.62c-.53-2.86-2.66-5.16-5.48-5.89l-2.76-.72,2.76-.71c2.81-.72,4.96-3,5.51-5.85l.45-2.32.45,2.32c.55,2.85,2.69,5.13,5.51,5.85l2.76.71Z"/>
+      </svg>
+    </a>
+    <h1>Edgar Oviedo</h1>
+  </div>
+</header>
+
+<div class="presupuesto-form-container">
+  <form class="presupuesto-form">
+    <h2>Solicitar Presupuesto</h2>
+    
+    <input type="text" placeholder="Nombre" required>
+    <input type="email" placeholder="Correo Electrónico" required>
+    <textarea placeholder="Detalles del Proyecto" rows="4" required></textarea>
+    
+    <button type="submit">Enviar</button>
+  </form>
+</div>
+
+
+<footer>
+  &copy; 2025 Mi Sitio Web. Todos los derechos reservados.
+</footer>
+</body>
+</html>

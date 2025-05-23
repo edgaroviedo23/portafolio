@@ -1,0 +1,689 @@
+/* ==== DISTRIBUCIÓN GENERAL ==== */
+html, body {
+  height: 100%;
+  margin: 0;
+  
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'OCRA', sans-serif;
+  background-color: #000;
+  background-image: url("../img/fondo1.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  background-attachment: fixed;
+  color: white;
+  
+}
+
+/* Contenedor principal para centrar y limitar ancho */
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 30px;
+  text-align: left;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ==== ENCABEZADO ==== */
+header {
+  width: 100%;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.header-container a {
+  display: flex;
+  align-items: center;
+}
+
+#Capa_1 {
+  width: 40px;  
+  height: 40px;
+  fill: white;
+  transition: transform 0.5s ease;
+}
+
+#Capa_1:hover {
+  animation: spin 1s linear infinite;
+}
+
+/* ==== ENCABEZADO ==== */
+header h1 {
+  font-family: 'OCRAEXT', sans-serif;
+  font-size: 22px;
+  margin-left: auto;
+  white-space: nowrap;
+  max-width: calc(100% - 50px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: transform 0.3s ease, color 0.3s ease;
+  cursor: default;
+}
+
+header h1:hover {
+  transform: scale(1.1);
+  /* Efecto metálico animado */
+  background: linear-gradient(90deg, #ffffff, #d4d4d4, #999999, #d4d4d4, #ffffff);
+  background-size: 400% 100%;
+  animation: metallic-move 3s linear infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+}
+
+/* ==== ANIMACIÓN SPIN ==== */
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==== HERO COLLAGE ==== */
+.hero-collage {
+  min-height: 430vh;
+  position: relative;
+  overflow: hidden;
+  padding: 40px;
+}
+
+.hero-collage h2,
+.hero-collage h3,
+.hero-collage h4,
+.hero-collage h5 {
+  position: absolute;
+  margin: 0;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.hero-collage h2 {
+  font-family: 'MOD20';
+  font-size: 90px;
+  top: 2%;
+  left: 23%;
+}
+
+.hero-collage h3 {
+  font-family: 'Oleragie';
+  font-size: 50px;
+  top: 4%;
+  left: 44%;
+}
+
+.hero-collage h4 {
+  font-family: 'paramita';
+  font-size: 125px;
+  top: 4%;
+  left: 19%;
+}
+
+.hero-collage h5 {
+  font-family: 'OCRAEXT';
+  font-size: 50px;
+  top: 7.8%;
+  left: 31%;
+}
+
+/* NUEVO: efecto metálico brillante al hacer hover */
+.hero-collage h2:hover,
+.hero-collage h3:hover,
+.hero-collage h4:hover,
+.hero-collage h5:hover {
+  transform: scale(1.1);
+  background: linear-gradient(90deg, #ffffff, #d4d4d4, #a8a8a8, #d4d4d4, #ffffff);
+  background-size: 400% 100%;
+  animation: metallic-move 3s linear infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+}
+
+/* NUEVOS ELEMENTOS (imagen, título, párrafo) posicionados para poder mover libremente */
+
+/* Carrusel 1 */
+.hero-collage .extra-carousel {
+  position: absolute;
+  top: 18%;
+  left: 45%;
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+.hero-collage .carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+  height: 100%;
+}
+.hero-collage .extra-carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.hero-collage .carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 20;
+}
+.hero-collage .prev {
+  left: 10px;
+}
+.hero-collage .next {
+  right: 10px;
+}
+.hero-collage .extra-title {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'MOD20', sans-serif;
+  font-size: 70px;
+  color: #9900ff;
+}
+.hero-collage .extra-paragraph {
+  position: absolute;
+  top: 21.5%;
+  left: 22%;
+  transform: translateX(-50%);
+  max-width: 500px;
+  font-family: sans-serif;
+  font-size: 20px;
+  line-height: 1.5;
+  color: white;
+  text-align: center;
+}
+
+/* Carrusel 2 */
+.hero-collage .extra-carousel2 {
+  position: absolute;
+  top:39%;
+  left: 10%;
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(20, 20, 50, 0.6);
+  z-index: 10;
+}
+.hero-collage .carousel-track2 {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+  height: 100%;
+}
+.hero-collage .extra-carousel2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.hero-collage .carousel-btn2 {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(50, 0, 50, 0.5);
+  color: #eee;
+  border: none;
+  font-size: 20px;
+  padding: 8px;
+  cursor: pointer;
+  z-index: 20;
+}
+.hero-collage .prev2 {
+  left: 10px;
+}
+.hero-collage .next2 {
+  right: 10px;
+}
+.hero-collage .extra-title2 {
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'paramita';
+  font-size: 90px;
+  color: #9900ff;
+}
+.hero-collage .extra-paragraph2 {
+  position: absolute;
+  top: 42.5%;
+  left: 72%;
+  transform: translateX(-50%);
+  max-width: 400px;
+  font-family: sans-serif;
+  font-size: 20px;
+  color: #ddd;
+  text-align: center;
+}
+
+/* Carrusel 3 */
+.hero-collage .extra-carousel3 {
+  position: absolute;
+  top: 60%;
+  left: 45%;
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 50, 0, 0.5);
+  z-index: 10;
+}
+.hero-collage .carousel-track3 {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+  height: 100%;
+}
+.hero-collage .extra-carousel3 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.hero-collage .carousel-btn3 {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 80, 20, 0.5);
+  color: white;
+  border: none;
+  font-size: 22px;
+  padding: 9px;
+  cursor: pointer;
+  z-index: 20;
+}
+.hero-collage .prev3 {
+  left: 10px;
+}
+.hero-collage .next3 {
+  right: 10px;
+}
+.hero-collage .extra-title3 {
+  position: absolute;
+  top: 72%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Oleragie';
+  font-size: 35px;
+  color: #9900ff;
+}
+.hero-collage .extra-paragraph3 {
+  position: absolute;
+  top: 63%;
+  left: 25%;
+  transform: translateX(-50%);
+  max-width: 450px;
+  font-family: sans-serif;
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* Carrusel 4 */
+.hero-collage .extra-carousel4 {
+  position: absolute;
+  top: 81%;
+  left: 10%;
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(50, 0, 100, 0.6);
+  z-index: 10;
+}
+.hero-collage .carousel-track4 {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+  height: 100%;
+}
+.hero-collage .extra-carousel4 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.hero-collage .carousel-btn4 {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(100, 0, 150, 0.5);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 20;
+}
+.hero-collage .prev4 {
+  left: 10px;
+}
+.hero-collage .next4 {
+  right: 10px;
+}
+.hero-collage .extra-title4 {
+  position: absolute;
+  top: 94%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'OCRAEXT', sans-serif;
+  font-size: 48px;
+  color: #9900ff;
+}
+.hero-collage .extra-paragraph4 {
+  position: absolute;
+  top: 84%;
+  left: 75%;
+  transform: translateX(-50%);
+  max-width: 500px;
+  font-family: sans-serif;
+  font-size: 20px;
+  color: #ccc;
+  text-align: center;
+}
+
+
+/* ==== EFECTO METALICO ANIMADO === */
+@keyframes metallic-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ==== FUENTES ==== */
+@font-face {
+  font-family: 'OCRA';
+  src: url('../fuentes/OCRA.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'MOD20';
+  src: url('../fuentes/MOD20.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Oleragie';
+  src: url('../fuentes/Oleragie.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Lovelace';
+  src: url('../fuentes/paramita.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'OCRAEXT';
+  src: url('../fuentes/OCRAEXT.ttf') format('truetype');
+}
+
+/* ==== BOTONES FIJOS ABAJO A LA DERECHA ==== */
+#toggle-theme,
+#lang-btn {
+  position: fixed;
+  bottom: 70px;
+  background: linear-gradient(145deg, #dcdcdc, #f6f6f6, #aaaaaa);
+  color: #111;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background-size: 200% 200%;
+  transition: background-position 0.5s ease;
+}
+
+#toggle-theme {
+  right: 20px;
+}
+
+#lang-btn {
+  right: 140px;
+}
+
+#toggle-theme:hover,
+#lang-btn:hover {
+  background-position: right center;
+  filter: brightness(1.2);
+}
+
+/* ==== FOOTER ==== */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #fff;
+  margin-top: auto;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ==== RESPONSIVE ==== */
+
+/* Tablets y pantallas medianas */
+@media (max-width: 1024px) {
+  .hero-collage h2 {
+    font-size: 60px;
+    top: 8%;
+    left: 3%;
+  }
+
+  .hero-collage h3 {
+    font-size: 30px;
+    top: 35%;
+    left: 1%;
+  }
+
+  .hero-collage h4 {
+    font-size: 60px;
+    top: 15%;
+    left: 25%;
+  }
+
+  .hero-collage h5 {
+    font-size: 30px;
+    top: 10%;
+    left: 40%;
+  }
+
+  .extra-carousel,
+  .extra-carousel2,
+  .extra-carousel3,
+  .extra-carousel4,
+  .extra-carousel5 {
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+    margin: 0 auto;
+  }
+
+  .extra-title,
+  .extra-title2,
+  .extra-title3,
+  .extra-title4,
+  .extra-title5 {
+    font-size: 36px;
+  }
+
+  .extra-paragraph,
+  .extra-paragraph2,
+  .extra-paragraph3,
+  .extra-paragraph4,
+  .extra-paragraph5 {
+    font-size: 16px;
+    max-width: 90%;
+  }
+}
+
+/* Móviles */
+@media (max-width: 640px) {
+  .extra-carousel,
+  .extra-carousel2,
+  .extra-carousel3,
+  .extra-carousel4,
+  .extra-carousel5 {
+    height: 200px;
+  }
+
+  .extra-title,
+  .extra-title2,
+  .extra-title3,
+  .extra-title4,
+  .extra-title5 {
+    font-size: 28px;
+  }
+
+  .extra-paragraph,
+  .extra-paragraph2,
+  .extra-paragraph3,
+  .extra-paragraph4,
+  .extra-paragraph5 {
+    font-size: 14px;
+    max-width: 90%;
+  }
+}
+
+/* Marcadores invisibles para scroll a elementos con position:absolute */
+.scroll-anchor {
+  height: 1px;
+  margin-top: 600px; /* Ajustá según el diseño */
+  visibility: hidden;
+}
+
+.presupuesto-link {
+  display: inline-block;          /* Que se comporte como bloque en línea */
+  margin-top: 15px;               /* Separación arriba */
+  padding: 10px 20px;             /* Espaciado interno */
+  background-color: #9900ff;      /* Color de fondo azul */
+  color: white;                   /* Texto blanco */
+  text-decoration: none;          /* Quitar subrayado */
+  border-radius: 5px;             /* Bordes redondeados */
+  font-weight: bold;              /* Texto en negrita */
+  transition: background-color 0.3s ease; /* Transición para hover */
+  cursor: pointer;                /* Cursor mano al pasar */
+  position: relative;             /* Para mover con top/left si quieres */
+  left: 600px;                    /* Mover 20px a la derecha */
+  top: 300px;                /* Si quieres mover hacia abajo */
+}
+
+.presupuesto-link:hover {
+  background-color:  #9900ff;      /* Color más oscuro al pasar el mouse */
+}
+
+/* ==== TEMA CLARO ==== */
+body.light-mode {
+  background-color: #f0f0f0;
+  background-image: url("../img/fondo2.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #111111; /* texto oscuro */
+}
+
+/* Cambiar color de textos en modo claro */
+body.light-mode header h1,
+body.light-mode .hero-collage h2,
+body.light-mode .hero-collage h3,
+body.light-mode .hero-collage h4,
+body.light-mode .hero-collage h5,
+body.light-mode .extra-title,
+body.light-mode .extra-title2,
+body.light-mode .extra-title3,
+body.light-mode .extra-title4,
+body.light-mode .extra-paragraph,
+body.light-mode .extra-paragraph2,
+body.light-mode .extra-paragraph3,
+body.light-mode .extra-paragraph4,
+body.light-mode footer,
+body.light-mode .presupuesto-link {
+  color: #111111;
+  text-shadow: none; /* eliminar sombras blancas para modo claro */
+}
+
+/* Ajustar efecto hover metálico para modo claro en header h1 */
+body.light-mode header h1:hover {
+  background: linear-gradient(90deg, #222, #555, #888, #555, #222);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Ajustar efecto hover metálico para textos en hero-collage en modo claro */
+body.light-mode .hero-collage h2:hover,
+body.light-mode .hero-collage h3:hover,
+body.light-mode .hero-collage h4:hover,
+body.light-mode .hero-collage h5:hover {
+  background: linear-gradient(90deg, #222, #555, #777, #555, #222);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Botones fijos abajo derecha - solo colores y sombras */
+body.light-mode #toggle-theme,
+body.light-mode #lang-btn {
+  background: linear-gradient(145deg, #e0e0e0, #ffffff, #c0c0c0);
+  color: #111111;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), inset 0 0 5px rgba(255, 255, 255, 0.6);
+}
+
+/* Footer fondo y color */
+body.light-mode footer {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #111111;
+}
+
+/* Enlaces con clase presupuesto-link */
+body.light-mode .presupuesto-link {
+  background-color: #9900ff;
+  color: #fff;
+}
+
+body.light-mode .presupuesto-link:hover {
+  background-color: #7a00cc;
+}

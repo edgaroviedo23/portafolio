@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Biografía</title>
+  <link rel="stylesheet" href="{% static 'main/css/estilo.css' %}">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="{% url 'inicio' %}">
+          <svg id="Capa_1" class="rotate-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.43 18.11">
+            <path class="cls-1" d="M17.43,8.88l-2.76.72c-2.81.74-4.95,3.04-5.48,5.9l-.48,2.62-.48-2.62c-.53-2.86-2.66-5.16-5.48-5.89l-2.76-.72,2.76-.71c2.81-.72,4.96-3,5.51-5.85l.45-2.32.45,2.32c.55,2.85,2.69,5.13,5.51,5.85l2.76.71Z"/>
+          </svg>
+        </a>
+      <h1>Mi Biografía</h1>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section>
+      <h2>Hola, soy Edgar Oviedo</h2>
+      <p>
+        Soy un apasionado de la tecnología, el diseño y la creatividad. Desde muy joven me he
+        involucrado en proyectos de desarrollo web, arte digital y programación. Mi enfoque se basa
+        en la innovación constante, el aprendizaje autodidacta y el trabajo colaborativo.
+      </p>
+
+      <p>
+        He trabajado en diversos proyectos que combinan estética y funcionalidad, buscando siempre
+        ofrecer experiencias memorables a través del diseño y el código.
+      </p>
+
+      <p>
+        En mi tiempo libre, disfruto explorar nuevas herramientas, experimentar con inteligencia
+        artificial y compartir conocimientos con la comunidad.
+      </p>
+    </section>
+  </main>
+
+<footer>
+    Portafolio Edgar Oviedo 2025 &mdash; Todos los derechos reservados
+</footer>
+
+  <!-- Botones fijos -->
+<button id="toggle-theme">Modo Oscuro</button>
+<script src="{% static 'main/js/edgaroviedo.js' %}"></script>
+</body>
+</html>

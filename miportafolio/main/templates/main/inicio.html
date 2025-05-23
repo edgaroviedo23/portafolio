@@ -1,0 +1,138 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio | Edgar Oviedo</title>
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="{% static 'main/css/estilo.css' %}">
+
+    <!-- Ícono de fondo -->
+    <link rel="icon" type="image/webp" href="{% static 'main/img/fondo1.webp' %}">
+</head>
+<body id="body">
+
+    <!-- Botones -->
+    <button id="toggle-theme">Modo Oscuro</button>
+
+    <!-- Encabezado -->
+    <header id="main-header">
+      <div class="header-container">
+        <a href="{% url 'inicio' %}">
+          <svg id="Capa_1" class="rotate-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.43 18.11">
+            <path class="cls-1" d="M17.43,8.88l-2.76.72c-2.81.74-4.95,3.04-5.48,5.9l-.48,2.62-.48-2.62c-.53-2.86-2.66-5.16-5.48-5.89l-2.76-.72,2.76-.71c2.81-.72,4.96-3,5.51-5.85l.45-2.32.45,2.32c.55,2.85,2.69,5.13,5.51,5.85l2.76.71Z"/>
+          </svg>
+        </a>
+        <h1><a href="{% url 'edgaroviedo' %}">Edgar Oviedo</a></h1>
+      </div>
+    </header>
+
+    {% block content %}
+    <section class="hero-collage">
+
+      <!-- Enlaces con scroll -->
+      <h2 class="scroll-trigger" data-target="ancla-1">DISEÑO GRÁFICO</h2>
+      <h3 class="scroll-trigger" data-target="ancla-3">ilustración</h3>
+      <h4 class="scroll-trigger" data-target="ancla-2">UXUI</h4>
+      <h5 class="scroll-trigger" data-target="ancla-4">HTML CSS JavaScript</h5>
+      <p><a href="{% url 'presupuesto' %}" class="presupuesto-link">Solicitar presupuesto</a></p>
+
+
+      <!-- Ancla invisible antes del Carrusel 1 -->
+      <div id="ancla-1" class="scroll-anchor"></div>
+      <div id="carrusel-1">
+        <div class="extra-carousel">
+          <div class="carousel-track">
+            <img src="{% static 'main/img/rectangulo.webp' %}" alt="Imagen 1">
+            <img src="{% static 'main/img/rectangulo2.webp' %}" alt="Imagen 2">
+            <img src="{% static 'main/img/rectangulo3.webp' %}" alt="Imagen 3">
+          </div>
+          <button class="carousel-btn prev">&#10094;</button>
+          <button class="carousel-btn next">&#10095;</button>
+        </div>
+        <h1 class="extra-title">Diseño Gráfico</h1>
+        <p class="extra-paragraph">El diseño gráfico  <br> combina texto, imágenes y colores para comunicar. <br> Se aplica en branding, publicidad y medios digitales. <br> Busca transmitir mensajes claros y atractivos..</p>
+      </div>
+
+      <!-- Ancla invisible antes del Carrusel 2 -->
+      <div id="ancla-2" class="scroll-anchor"></div>
+      <div id="carrusel-2">
+        <div class="extra-carousel2">
+          <div class="carousel-track2">
+            <img src="{% static 'main/img/rectangulo.webp' %}" alt="Imagen 4">
+            <img src="{% static 'main/img/rectangulo2.webp' %}" alt="Imagen 5">
+            <img src="{% static 'main/img/rectangulo3.webp' %}" alt="Imagen 6">
+          </div>
+          <button class="carousel-btn2 prev2">&#10094;</button>
+          <button class="carousel-btn2 next2">&#10095;</button>
+        </div>
+        <h1 class="extra-title2">UXUI</h1>
+        <p class="extra-paragraph2">El diseño UX <br>
+    se enfoca en crear experiencias <br>
+    digitales intuitivas y mejora la usabilidad. <br>
+    Facilita la interacción y resuelve necesidades.</p>
+
+      </div>
+
+      <!-- Ancla invisible antes del Carrusel 3 -->
+      <div id="ancla-3" class="scroll-anchor"></div>
+      <div id="carrusel-3">
+        <div class="extra-carousel3">
+          <div class="carousel-track3">
+            <img src="{% static 'main/img/rectangulo.webp' %}" alt="Imagen 7">
+            <img src="{% static 'main/img/rectangulo2.webp' %}" alt="Imagen 8">
+            <img src="{% static 'main/img/rectangulo3.webp' %}" alt="Imagen 9">
+          </div>
+          <button class="carousel-btn3 prev3">&#10094;</button>
+          <button class="carousel-btn3 next3">&#10095;</button>
+        </div>
+        <h1 class="extra-title3">Ilustración</h1>
+        <p class="extra-paragraph3">La ilustración crea imágenes para <br>
+    comunicar ideas o emociones. <br>
+    Puede ser manual o digital, usada <br>
+    en libros y publicidad.
+    </p>
+      </div>
+
+      <!-- Ancla invisible antes del Carrusel 4 -->
+      <div id="ancla-4" class="scroll-anchor"></div>
+      <div id="carrusel-4">
+        <div class="extra-carousel4">
+          <div class="carousel-track4">
+            <img src="{% static 'main/img/rectangulo.webp' %}" alt="Imagen 10">
+            <img src="{% static 'main/img/rectangulo2.webp' %}" alt="Imagen 11">
+            <img src="{% static 'main/img/rectangulo3.webp' %}" alt="Imagen 12">
+          </div>
+          <button class="carousel-btn4 prev4">&#10094;</button>
+          <button class="carousel-btn4 next4">&#10095;</button>
+        </div>
+        <h1 class="extra-title4">HTML, CSS, JavaScript</h1>
+        <p class="extra-paragraph4">La programación escribe código <br>
+    para que las computadoras realicen tareas. <br>
+    Crea software, aplicaciones <br>
+    y sitios web funcionales.
+    </p>
+      </div>
+
+    </section>
+    {% endblock content %}
+
+<!-- Contenido principal adicional si lo hubiera -->
+<main class="main-content">
+    
+</main>
+
+<!-- Footer -->
+<footer>
+    Portafolio Edgar Oviedo 2025 &mdash; Todos los derechos reservados
+</footer>
+
+<!-- Scripts -->
+<script src="{% static 'main/js/inicio.js' %}"></script>
+
+</body>
+</html>
