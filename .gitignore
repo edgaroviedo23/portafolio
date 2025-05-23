@@ -1,0 +1,55 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Media files (uploads)
+media/
+# Static files collected (optional, si usas collectstatic y no quieres subir la carpeta)
+staticfiles/
+
+# Env files
+.env
+.env.*
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# VSCode settings (opcional)
+.vscode/
+
+# macOS files
+.DS_Store
+
+# PyCharm files
+.idea/
+
+# Python test cache
+.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+
+# mypy
+.mypy_cache/
+
+# Celery stuff
+celerybeat-schedule
+
+# Ignore Railway config if local only (ajusta si usas config local)
+.railway/
+
+# If you use Pipenv
+Pipfile.lock
+
+# If you use Poetry
+poetry.lock
