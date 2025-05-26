@@ -6,13 +6,14 @@ from decouple import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Email settings - usa variables de entorno para que Railway funcione correctamente
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = config("EMAIL_HOST", default='smtp.gmail.com')
-EMAIL_PORT = config("EMAIL_PORT", cast=int, default=587)
-EMAIL_USE_TLS = config("EMAIL_USE_TLS", cast=bool, default=True)
-EMAIL_HOST_USER = config("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
-DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL", default=EMAIL_HOST_USER)
+EMAIL_BACKEND = os.getenv("EMAIL_BACKEND")
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_PORT = int(os.getenv("EMAIL_PORT"))
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS") == "True"
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL")
+
 
 print("EMAIL_HOST_USER:", EMAIL_HOST_USER)  # Solo para debug, quita luego
 print("EMAIL_HOST_PASSWORD seteada?:", EMAIL_HOST_PASSWORD is not None)

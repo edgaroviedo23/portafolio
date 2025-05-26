@@ -24,26 +24,44 @@
     {% csrf_token %}
     <h2>Solicitar Presupuesto</h2>
 
-    <input type="text" name="nombre" placeholder="Nombre" required>
-    <input type="email" name="email" placeholder="Correo Electrónico" required>
-    <textarea name="mensaje" placeholder="Detalles del Proyecto" rows="4" required></textarea>
+    {% if form.non_field_errors %}
+      <div style="color:red; margin-bottom: 10px;">
+        {{ form.non_field_errors }}
+      </div>
+    {% endif %}
+
+    <div>
+      {{ form.nombre.label_tag }}
+      {{ form.nombre }}
+      {% if form.nombre.errors %}
+        <div style="color:red;">{{ form.nombre.errors }}</div>
+      {% endif %}
+    </div>
+
+    <div>
+      {{ form.email.label_tag }}
+      {{ form.email }}
+      {% if form.email.errors %}
+        <div style="color:red;">{{ form.email.errors }}</div>
+      {% endif %}
+    </div>
+
+    <div>
+      {{ form.mensaje.label_tag }}
+      {{ form.mensaje }}
+      {% if form.mensaje.errors %}
+        <div style="color:red;">{{ form.mensaje.errors }}</div>
+      {% endif %}
+    </div>
 
     <button type="submit">Enviar</button>
   </form>
-
-  <div id="mensaje-exito" style="display:none; color: green; margin-top: 10px;">
-    ¡Formulario enviado con éxito!
-  </div>
 </div>
-
-
-
-</div>
-
 
 <footer>
   &copy; 2025 Mi Sitio Web. Todos los derechos reservados.
 </footer>
+
 <script src="{% static 'main/js/presupuesto.js' %}"></script>
 </body>
 </html>
