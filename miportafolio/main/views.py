@@ -66,7 +66,7 @@ def enviar_presupuesto(request):
         subject="Nuevo presupuesto recibido",
         message=mensaje,
         from_email=settings.DEFAULT_FROM_EMAIL,
-        recipient_list=['tucorreo@dominio.com'],  # CAMBIA esto a tu correo real
+        recipient_list=['edgarkonectia@gmail.com'],  # CAMBIA esto a tu correo real
         fail_silently=False,
     )
 
