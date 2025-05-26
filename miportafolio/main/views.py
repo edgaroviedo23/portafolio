@@ -1,20 +1,28 @@
-from django.shortcuts import render, redirect
-from .models import Proyecto, Comentario
-from .forms import ComentarioForm, PresupuestoForm
+from django.shortcuts import render
 from django.core.mail import send_mail
-import requests
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 
-from django.shortcuts import render
+from .forms import PresupuestoForm
+
 
 def inicio(request):
     return render(request, 'main/inicio.html')
 
+
 def solicitar_presupuesto(request):
-    return render(request, 'main/presupuesto.html', {'form' : PresupuestoForm()})
+    return render(request, 'main/presupuesto.html', {'form': PresupuestoForm()})
+
+def edgaroviedo_view(request):
+    # tu lógica aquí
+    return render(request, 'main/edgaroviedo.html') 
+
+def github_projects(request):
+    # Puedes personalizar esto
+    return render(request, 'main/github_projects.html')
+
 
 def presupuesto(request):
     if request.method == 'POST':
@@ -23,8 +31,8 @@ def presupuesto(request):
             send_mail(
                 'Solicitud de presupuesto',
                 f"Nombre: {form.cleaned_data['nombre']}\nEmail: {form.cleaned_data['email']}\nMensaje: {form.cleaned_data['mensaje']}",
-                'tu_email@gmail.com',  # Remitente
-                ['destino@ejemplo.com'],  # Destinatario
+                settings.DEFAULT_FROM_EMAIL,  # Remitente (tu email)
+                ['edgarkonectia@gmail.com'],  # Destinatario (tu correo real)
                 fail_silently=False,
             )
             return render(request, 'main/gracias.html')
@@ -33,28 +41,8 @@ def presupuesto(request):
     return render(request, 'main/presupuesto.html', {'form': form})
 
 
-
-def edgaroviedo_view(request):
-    return render(request, 'main/edgaroviedo.html')
-
-
-def github_projects(request):
-    github_username = "TU_USUARIO"  # <-- Cambia esto
-    url = f"https://api.github.com/users/{github_username}/repos"
-    response = requests.get(url)
-    
-    if response.status_code == 200:
-        repos = response.json()
-    else:
-        repos = []
-
-    context = {
-        "repos": repos
-    }
-    return render(request, "portfolio/github_projects.html", context)
-
 @require_POST
-@csrf_exempt  # Solo si no usas {% csrf_token %}. Si lo usas, puedes quitar esta línea.
+@csrf_exempt  # Quita esta línea si usas csrf_token en tu formulario
 def enviar_presupuesto(request):
     nombre = request.POST.get('nombre')
     correo = request.POST.get('correo')
@@ -66,8 +54,9 @@ def enviar_presupuesto(request):
         subject="Nuevo presupuesto recibido",
         message=mensaje,
         from_email=settings.DEFAULT_FROM_EMAIL,
-        recipient_list=['edgarkonectia@gmail.com'],  # CAMBIA esto a tu correo real
+        recipient_list=['edgarkonectia@gmail.com'],  # Cambia a tu correo real
         fail_silently=False,
     )
 
     return JsonResponse({'success': True})
+

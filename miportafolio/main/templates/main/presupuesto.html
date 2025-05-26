@@ -20,20 +20,22 @@
 </header>
 
 <div class="presupuesto-form-container">
-  <form id="presupuesto-form" class="presupuesto-form">
-  {% csrf_token %}
-  <h2>Solicitar Presupuesto</h2>
+  <form id="presupuesto-form" class="presupuesto-form" method="post">
+    {% csrf_token %}
+    <h2>Solicitar Presupuesto</h2>
 
-  <input type="text" name="nombre" placeholder="Nombre" required>
-  <input type="email" name="correo" placeholder="Correo Electrónico" required>
-  <textarea name="detalles" placeholder="Detalles del Proyecto" rows="4" required></textarea>
+    <input type="text" name="nombre" placeholder="Nombre" required>
+    <input type="email" name="correo" placeholder="Correo Electrónico" required>
+    <textarea name="detalles" placeholder="Detalles del Proyecto" rows="4" required></textarea>
 
-  <button type="submit">Enviar</button>
+    <button type="submit">Enviar</button>
+  </form>
 
   <div id="mensaje-exito" style="display:none; color: green; margin-top: 10px;">
     ¡Formulario enviado con éxito!
   </div>
-</form>
+</div>
+
 
 </div>
 
