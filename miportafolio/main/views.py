@@ -4,6 +4,9 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
+import logging
+
+logger = logging.getLogger(__name__)
 
 from .forms import PresupuestoForm
 
@@ -41,22 +44,28 @@ def presupuesto(request):
     return render(request, 'main/presupuesto.html', {'form': form})
 
 
-@require_POST
-@csrf_exempt  # Quita esta línea si usas csrf_token en tu formulario
+@csrf_exempt  # Quita si usas {% csrf_token %}
 def enviar_presupuesto(request):
+    if request.method != "POST":
+        return JsonResponse({'success': False, 'error': 'Método no permitido'}, status=405)
+
     nombre = request.POST.get('nombre')
     correo = request.POST.get('correo')
     detalles = request.POST.get('detalles')
 
     mensaje = f"Nombre: {nombre}\nCorreo: {correo}\n\nDetalles:\n{detalles}"
 
-    send_mail(
-        subject="Nuevo presupuesto recibido",
-        message=mensaje,
-        from_email=settings.DEFAULT_FROM_EMAIL,
-        recipient_list=['edgarkonectia@gmail.com'],  # Cambia a tu correo real
-        fail_silently=False,
-    )
-
-    return JsonResponse({'success': True})
-
+    try:
+        send_mail(
+            subject="Nuevo presupuesto recibido",
+            message=mensaje,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=['edgarkonectia@gmail.com'],
+            fail_silently=False,
+        )
+        return JsonResponse({'success': True})
+    
+    except Exception as e:
+        logger.error("Error al enviar el correo:", exc_info=e)
+        print("❌ ERROR AL ENVIAR CORREO:", e)  # <-- Esto aparecerá en Railway
+        return JsonResponse({'success': False, 'error': str(e)}, status=500)
