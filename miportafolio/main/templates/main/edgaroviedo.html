@@ -39,7 +39,31 @@
         artificial y compartir conocimientos con la comunidad.
       </p>
     </section>
+
+<section class="comentarios-section">
+  <h3>Comentarios</h3>
+  <form method="POST" action="{% url 'edgaroviedo' %}">
+    {% csrf_token %}
+    <input type="text" name="nombre" placeholder="Tu nombre" required>
+    <textarea name="contenido" placeholder="Escribe tu comentario..." rows="4" required></textarea>
+    <button type="submit">Enviar Comentario</button>
+  </form>
+
+  <div class="lista-comentarios">
+    {% for comentario in comentarios %}
+      <div class="comentario">
+        <p><strong>{{ comentario.nombre }}</strong> <small>{{ comentario.fecha|date:"d M Y H:i" }}</small></p>
+        <p>{{ comentario.contenido }}</p>
+      </div>
+    {% empty %}
+      <p>No hay comentarios aún.</p>
+    {% endfor %}
+  </div>
+</section>
   </main>
+
+  
+
 
 <footer>
     Portafolio Edgar Oviedo 2025 &mdash; Todos los derechos reservados

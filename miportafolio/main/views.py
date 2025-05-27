@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.conf import settings
 from django.core.mail import EmailMessage
+from .models import Comentario
 
 def inicio(request):
     return render(request, 'main/inicio.html')
@@ -43,3 +44,18 @@ def enviar_presupuesto(request):
         'mensaje_enviado': mensaje_enviado,
         'error_envio': error_envio
     })
+
+
+
+def edgaroviedo_view(request):
+    if request.method == 'POST':
+        nombre = request.POST.get('nombre')
+        contenido = request.POST.get('contenido')
+
+        if nombre and contenido:
+            Comentario.objects.create(nombre=nombre, contenido=contenido)
+            return redirect('edgaroviedo')  # Redirige para evitar reenvíos de formulario
+
+    comentarios = Comentario.objects.order_by('-fecha')  # Más recientes primero
+
+    return render(request, 'main/edgaroviedo.html', {'comentarios': comentarios})

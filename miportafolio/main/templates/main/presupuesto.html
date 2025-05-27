@@ -5,9 +5,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Solicita Presupuesto</title>
-  <link rel="stylesheet" href="{% static 'main/css/presupuesto.css' %}" />
+  <link rel="stylesheet" href="{% static 'main/css/estilo.css' %}" />
 </head>
 <body>
+      <!-- Botones -->
+    <button id="toggle-theme" aria-label="Cambiar tema">Cambiar tema</button>
+
 <header>
   <div class="header-container">
     <a href="{% url 'inicio' %}" aria-label="Inicio">
@@ -19,28 +22,27 @@
   </div>
 </header>
 
-<div class="presupuesto-form-container">
-<form class="presupuesto-form" method="POST" action="{% url 'presupuesto' %}">
-  {% csrf_token %}
-  <input type="text" name="nombre" placeholder="Nombre" required>
-  <input type="email" name="correo" placeholder="Correo Electrónico" required>
-  <textarea name="detalles" placeholder="Detalles del Proyecto" rows="4" required></textarea>
-  <button type="submit">Enviar</button>
-</form>
-
-{% if mensaje_enviado %}
-  <p style="color:green;">¡Formulario enviado correctamente!</p>
-{% elif error_envio %}
-  <p style="color:red;">Hubo un error al enviar el formulario. Intenta nuevamente.</p>
-{% endif %}
-
-
-
-</div>
-
+<main class="main-content">
+  <div class="presupuesto-form-container">
+    {% if mensaje_enviado %}
+      <p style="color: #66ff66;">¡Formulario enviado correctamente!</p>
+    {% elif error_envio %}
+      <p style="color: #ff6666;">Hubo un error al enviar el formulario. Intenta nuevamente.</p>
+    {% endif %}
+    <form class="presupuesto-form" method="POST" action="{% url 'presupuesto' %}">
+      {% csrf_token %}
+      <input type="text" name="nombre" placeholder="Nombre" required>
+      <input type="email" name="correo" placeholder="Correo Electrónico" required>
+      <textarea name="detalles" placeholder="Detalles del Proyecto" rows="4" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</main>
 
 <footer>
   &copy; 2025 Mi Sitio Web. Todos los derechos reservados.
 </footer>
+<!-- Scripts -->
+<script src="{% static 'main/js/presupuesto.js' %}"></script
 </body>
 </html>

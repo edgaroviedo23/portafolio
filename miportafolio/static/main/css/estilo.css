@@ -687,3 +687,82 @@ body.light-mode .presupuesto-link {
 body.light-mode .presupuesto-link:hover {
   background-color: #7a00cc;
 }
+
+/* Estilos generales para el formulario */
+form {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 20px auto;
+  color: white;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Inputs y textarea (modo oscuro) */
+form input[type="text"],
+form input[type="email"],
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 2px solid #9900ff;
+  border-radius: 6px;
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Placeholder color modo oscuro */
+form input::placeholder,
+form textarea::placeholder {
+  color: #ccc;
+}
+
+/* Inputs y textarea (modo claro) */
+body.light-mode form {
+  background-color: rgba(240, 240, 240, 0.9);
+  color: #111111;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode form input[type="text"],
+body.light-mode form input[type="email"],
+body.light-mode form textarea {
+  background-color: white;
+  color: #111111;
+  border: 2px solid #9900ff;
+}
+
+body.light-mode form input::placeholder,
+body.light-mode form textarea::placeholder {
+  color: #666;
+}
+
+/* Botón del formulario */
+form button {
+  background-color: #9900ff;
+  color: white;
+  font-weight: bold;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #7a00cc;
+}
+
+/* Botón en modo claro */
+body.light-mode form button {
+  background-color: #9900ff;
+  color: white;
+}
+
+body.light-mode form button:hover {
+  background-color: #7a00cc;
+}
