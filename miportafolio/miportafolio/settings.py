@@ -101,9 +101,21 @@ WSGI_APPLICATION = 'miportafolio.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # 
-
+DATABASE_URL= os.getenv('DATABASE_URL')
 DATABASES = {
-    'default' : dj_database_url.config(default=os.getenv('DATABASE_URL'))
+    'default' : dj_database_url.parse(DATABASE_URL)
+    }
+if DATABASE_URL:
+    DATABASES = {
+        'default': dj_database_url.parse(DATABASE_URL)
+    }
+else:
+    # Configuración para desarrollo local o para lanzar error
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
 
 
