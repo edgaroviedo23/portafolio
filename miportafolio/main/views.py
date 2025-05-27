@@ -1,50 +1,45 @@
-from django.shortcuts import render, redirect
-from .models import Proyecto, Comentario
-from .forms import ComentarioForm, PresupuestoForm
-from django.core.mail import send_mail
-import requests 
-
 from django.shortcuts import render
+from django.core.mail import send_mail
+from django.conf import settings
+from django.core.mail import EmailMessage
 
 def inicio(request):
     return render(request, 'main/inicio.html')
-
-def solicitar_presupuesto(request):
-    return render(request, 'main/presupuesto.html', {'form' : PresupuestoForm()})
-
-def presupuesto(request):
-    if request.method == 'POST':
-        form = PresupuestoForm(request.POST)
-        if form.is_valid():
-            send_mail(
-                'Solicitud de presupuesto',
-                f"Nombre: {form.cleaned_data['nombre']}\nEmail: {form.cleaned_data['email']}\nMensaje: {form.cleaned_data['mensaje']}",
-                'tu_email@gmail.com',  # Remitente
-                ['destino@ejemplo.com'],  # Destinatario
-                fail_silently=False,
-            )
-            return render(request, 'main/gracias.html')
-    else:
-        form = PresupuestoForm()
-    return render(request, 'main/presupuesto.html', {'form': form})
-
-
 
 def edgaroviedo_view(request):
     return render(request, 'main/edgaroviedo.html')
 
 
-def github_projects(request):
-    github_username = "TU_USUARIO"  # <-- Cambia esto
-    url = f"https://api.github.com/users/{github_username}/repos"
-    response = requests.get(url)
-    
-    if response.status_code == 200:
-        repos = response.json()
-    else:
-        repos = []
+def enviar_presupuesto(request):
+    mensaje_enviado = False
+    error_envio = False
 
-    context = {
-        "repos": repos
-    }
-    return render(request, "portfolio/github_projects.html", context)
+    if request.method == 'POST':
+        nombre = request.POST.get('nombre')
+        correo = request.POST.get('correo')
+        detalles = request.POST.get('detalles')
+
+        asunto = f"Solicitud de presupuesto de {nombre}"
+        cuerpo = f"Correo: {correo}\n\nDetalles del proyecto:\n{detalles}"
+
+        try:
+            email = EmailMessage(
+                subject=asunto,
+                body=cuerpo,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                to=[settings.DEFAULT_FROM_EMAIL],
+                reply_to=[correo],  # para que al responder te conteste el usuario
+            )
+            email.content_subtype = "plain"  # para que sea texto plano
+            email.encoding = 'utf-8'  # aquí indicas la codificación correcta
+            email.send(fail_silently=False)
+            mensaje_enviado = True
+            print("Correo enviado con éxito")
+        except Exception as e:
+            error_envio = True
+            print(f"Error enviando correo: {e}")
+
+    return render(request, 'main/presupuesto.html', {
+        'mensaje_enviado': mensaje_enviado,
+        'error_envio': error_envio
+    })

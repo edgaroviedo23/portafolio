@@ -20,15 +20,22 @@
 </header>
 
 <div class="presupuesto-form-container">
-  <form class="presupuesto-form">
-    <h2>Solicitar Presupuesto</h2>
-    
-    <input type="text" placeholder="Nombre" required>
-    <input type="email" placeholder="Correo Electrónico" required>
-    <textarea placeholder="Detalles del Proyecto" rows="4" required></textarea>
-    
-    <button type="submit">Enviar</button>
-  </form>
+<form method="POST" action="{% url 'presupuesto' %}">
+  {% csrf_token %}
+  <input type="text" name="nombre" placeholder="Nombre" required>
+  <input type="email" name="correo" placeholder="Correo Electrónico" required>
+  <textarea name="detalles" placeholder="Detalles del Proyecto" rows="4" required></textarea>
+  <button type="submit">Enviar</button>
+</form>
+
+{% if mensaje_enviado %}
+  <p style="color:green;">¡Formulario enviado correctamente!</p>
+{% elif error_envio %}
+  <p style="color:red;">Hubo un error al enviar el formulario. Intenta nuevamente.</p>
+{% endif %}
+
+
+
 </div>
 
 

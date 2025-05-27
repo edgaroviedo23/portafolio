@@ -746,3 +746,15 @@ body.light-mode .presupuesto-link:hover {
   background: #d4af37; /* dorado metálico */
   color: #222;
 }
+
+.mensaje-enviado {
+  color: green;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.mensaje-error {
+  color: red;
+  font-weight: bold;
+  margin-top: 15px;
+}

@@ -20,6 +20,16 @@ import dj_database_url
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'edgarkonectia@gmail.com'
+
+# Configuración SMTP (ejemplo para Gmail)
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'edgarkonectia@gmail.com'
+EMAIL_HOST_PASSWORD = 'pbgy jhop qtrn sbmy'
+EMAIL_CHARSET = 'utf-8'
 
 
 # Quick-start development settings - unsuitable for production
@@ -141,14 +151,6 @@ STATIC_ROOT = BASE_DIR /'staticfiles'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# Configuración de email para Django
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'  # Cambia si usas otro proveedor
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'tu_email@gmail.com'   # Tu correo desde donde enviarás los mails
-EMAIL_HOST_PASSWORD = 'tu_contraseña_o_token'  # Contraseña o token de aplicación
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 14
 SESSION_SAVE_EVERY_REQUEST = False
