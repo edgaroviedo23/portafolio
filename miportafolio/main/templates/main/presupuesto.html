@@ -20,7 +20,7 @@
 </header>
 
 <div class="presupuesto-form-container">
-<form method="POST" action="{% url 'presupuesto' %}">
+<form class="presupuesto-form" method="POST" action="{% url 'presupuesto' %}">
   {% csrf_token %}
   <input type="text" name="nombre" placeholder="Nombre" required>
   <input type="email" name="correo" placeholder="Correo Electrónico" required>
