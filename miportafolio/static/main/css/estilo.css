@@ -498,90 +498,143 @@ a {
   color: inherit;
 }
 
-/* ==== RESPONSIVE ==== */
-
-/* Tablets y pantallas medianas */
+/* === Ajustes para Tablets y pantallas medianas (max-width: 1024px) === */
 @media (max-width: 1024px) {
+  .hero-collage {
+    padding: 20px;
+    min-height: auto; /* Evitar altura fija demasiado grande */
+  }
+
   .hero-collage h2 {
-    font-size: 60px;
-    top: 8%;
-    left: 3%;
+    font-size: 48px;
+    top: 5%;
+    left: 5%;
   }
 
   .hero-collage h3 {
-    font-size: 30px;
-    top: 35%;
-    left: 1%;
+    font-size: 28px;
+    top: 20%;
+    left: 5%;
   }
 
   .hero-collage h4 {
-    font-size: 60px;
-    top: 15%;
-    left: 25%;
+    font-size: 48px;
+    top: 12%;
+    left: 30%;
   }
 
   .hero-collage h5 {
-    font-size: 30px;
-    top: 10%;
-    left: 40%;
-  }
-
-  .extra-carousel,
-  .extra-carousel2,
-  .extra-carousel3,
-  .extra-carousel4,
-  .extra-carousel5 {
-    width: 100%;
-    max-width: 600px;
-    height: 300px;
-    margin: 0 auto;
-  }
-
-  .extra-title,
-  .extra-title2,
-  .extra-title3,
-  .extra-title4,
-  .extra-title5 {
-    font-size: 36px;
-  }
-
-  .extra-paragraph,
-  .extra-paragraph2,
-  .extra-paragraph3,
-  .extra-paragraph4,
-  .extra-paragraph5 {
-    font-size: 16px;
-    max-width: 90%;
-  }
-}
-
-/* Móviles */
-@media (max-width: 640px) {
-  .extra-carousel,
-  .extra-carousel2,
-  .extra-carousel3,
-  .extra-carousel4,
-  .extra-carousel5 {
-    height: 200px;
-  }
-
-  .extra-title,
-  .extra-title2,
-  .extra-title3,
-  .extra-title4,
-  .extra-title5 {
     font-size: 28px;
+    top: 15%;
+    left: 45%;
+  }
+
+  /* Carruseles - usar posiciones relativas para que no se salga de pantalla */
+  .extra-carousel,
+  .extra-carousel2,
+  .extra-carousel3,
+  .extra-carousel4 {
+    position: relative !important; /* quitar absolute */
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    max-width: 600px !important;
+    height: 300px !important;
+    margin: 30px auto !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .extra-title,
+  .extra-title2,
+  .extra-title3,
+  .extra-title4 {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    font-size: 36px;
+    margin: 10px 0 0 0;
+    text-align: center;
   }
 
   .extra-paragraph,
   .extra-paragraph2,
   .extra-paragraph3,
-  .extra-paragraph4,
-  .extra-paragraph5 {
-    font-size: 14px;
+  .extra-paragraph4 {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
     max-width: 90%;
+    font-size: 16px;
+    margin: 10px auto 40px auto;
+    text-align: center;
   }
 }
+
+/* === Ajustes para móviles (max-width: 640px) === */
+@media (max-width: 640px) {
+  .hero-collage {
+    padding: 10px;
+    overflow: visible !important; /* Para que no se oculten los carruseles */
+  }
+
+  .hero-collage h2 {
+    font-size: 32px;
+    top: 3%;
+    left: 17%;
+  }
+
+  .hero-collage h3 {
+    font-size: 15px;
+    top: 3.7%;
+    left: 44%;
+  }
+
+  .hero-collage h4 {
+    font-size: 40px;
+    top: 3.7%;
+    left: 16%;
+  }
+
+  .hero-collage h5 {
+    font-size: 20px;
+    top: 4.7%;
+    left: 21%;
+  }
+
+  .extra-carousel,
+  .extra-carousel2,
+  .extra-carousel3,
+  .extra-carousel4 {
+    position: relative !important; /* Añadido para móviles */
+    height: 200px !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 20px auto !important;
+  }
+
+  .extra-title,
+  .extra-title2,
+  .extra-title3,
+  .extra-title4 {
+    font-size: 24px;
+  }
+
+  .extra-paragraph,
+  .extra-paragraph2,
+  .extra-paragraph3,
+  .extra-paragraph4 {
+    font-size: 14px;
+    max-width: 95%;
+  }
+
+  /* Ajustes para evitar overflow horizontal */
+  body, html {
+    overflow-x: hidden;
+  }
+}
+
 
 /* Marcadores invisibles para scroll a elementos con position:absolute */
 .scroll-anchor {
