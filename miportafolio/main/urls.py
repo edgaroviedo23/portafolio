@@ -9,6 +9,6 @@ urlpatterns = [
     path('presupuesto/', enviar_presupuesto, name='presupuesto'),
     path('edgaroviedo/', views.edgaroviedo_view, name='edgaroviedo'),
     path('politica-cookies/', views.politica_cookies, name='politica_cookies'),
-    path('edgaroviedo/', edgaroviedo_view, name='edgaroviedo'),
+    
 
 ]
