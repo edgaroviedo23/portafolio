@@ -40,6 +40,15 @@
       </p>
     </section>
 
+    <section class="frase-del-dia">
+  <h3>Frase del día</h3>
+  <blockquote>
+    "{{ frase.content }}"<br>
+    <small>— {{ frase.author }}</small>
+  </blockquote>
+</section>
+
+
 <section class="comentarios-section">
   <h3>Comentarios</h3>
   <form method="POST" action="{% url 'edgaroviedo' %}">

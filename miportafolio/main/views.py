@@ -5,7 +5,7 @@ from django.core.mail import EmailMessage
 from .models import Comentario
 from django.http import HttpResponse
 from django.core import signing
-
+import requests
 
 def inicio(request):
     return render(request, 'main/inicio.html')
@@ -81,3 +81,13 @@ def get_signed_cookie_view(request):
     
 def politica_cookies(request):
     return render(request, 'main/politica_cookies.html')
+
+
+def home_view(request):
+    # Llama a la API de frases
+    url = "https://api.quotable.io/random"
+    response = requests.get(url)
+    frase = response.json() if response.status_code == 200 else {"content": "Error al obtener frase", "author": ""}
+
+    # Renderiza el template pasando la frase como contexto
+    return render(request, "main/edgaroviedo.html", {"frase": frase})
