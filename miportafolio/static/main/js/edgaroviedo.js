@@ -13,3 +13,4 @@ toggleBtn.addEventListener('click', () => {
     svgPath.style.fill = 'white';  // Cambia el color del SVG a blanco
   }
 });
+

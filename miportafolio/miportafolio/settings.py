@@ -131,3 +131,10 @@ CACHES = {
 
 # Confianza CSRF en Railway
 CSRF_TRUSTED_ORIGINS = ["https://*.railway.app"]
+
+
+# Cookies más seguras
+SESSION_COOKIE_SECURE = True  # Solo enviar por HTTPS
+CSRF_COOKIE_SECURE = True     # Igual
+SESSION_COOKIE_HTTPONLY = True  # No accesible por JavaScript
+CSRF_COOKIE_HTTPONLY = True

@@ -3,6 +3,9 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.core.mail import EmailMessage
 from .models import Comentario
+from django.http import HttpResponse
+from django.core import signing
+
 
 def inicio(request):
     return render(request, 'main/inicio.html')
@@ -59,3 +62,22 @@ def edgaroviedo_view(request):
     comentarios = Comentario.objects.order_by('-fecha')  # Más recientes primero
 
     return render(request, 'main/edgaroviedo.html', {'comentarios': comentarios})
+
+
+# Cookies
+
+
+def set_signed_cookie_view(request):
+    response = HttpResponse("🔐 Cookie firmada establecida")
+    response.set_signed_cookie('segura', 'dato123', salt='mi_salt', max_age=3600)
+    return response
+
+def get_signed_cookie_view(request):
+    try:
+        valor = request.get_signed_cookie('segura', salt='mi_salt')
+        return HttpResponse(f"🔍 Cookie firmada: {valor}")
+    except Exception:
+        return HttpResponse("⚠️ Cookie inválida o manipulada")
+    
+def politica_cookies(request):
+    return render(request, 'main/politica_cookies.html')

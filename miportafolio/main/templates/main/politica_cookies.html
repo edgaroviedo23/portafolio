@@ -1,0 +1,68 @@
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio | Edgar Oviedo</title>
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="{% static 'main/css/estilo.css' %}">
+
+    <!-- Ícono de fondo -->
+    <link rel="icon" type="image/webp" href="{% static 'main/img/fondo1.webp' %}">
+</head>
+<body id="body">
+
+    <!-- Botones -->
+    <button id="toggle-theme">Modo Oscuro</button>
+
+    <!-- Encabezado -->
+    <header id="main-header">
+      <div class="header-container">
+        <a href="{% url 'inicio' %}">
+          <svg id="Capa_1" class="rotate-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.43 18.11">
+            <path class="cls-1" d="M17.43,8.88l-2.76.72c-2.81.74-4.95,3.04-5.48,5.9l-.48,2.62-.48-2.62c-.53-2.86-2.66-5.16-5.48-5.89l-2.76-.72,2.76-.71c2.81-.72,4.96-3,5.51-5.85l.45-2.32.45,2.32c.55,2.85,2.69,5.13,5.51,5.85l2.76.71Z"/>
+          </svg>
+        </a>
+        <h1><a href="{% url 'edgaroviedo' %}">Edgar Oviedo</a></h1>
+      </div>
+    </header>
+<div class="container" style="padding: 2em;">
+  <h1>Política de Cookies</h1>
+  <p>Esta página explica qué son las cookies, cómo las usamos y tus opciones al respecto.</p>
+
+  <h2>¿Qué son las cookies?</h2>
+  <p>Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas sitios web.</p>
+
+  <h2>¿Para qué usamos cookies?</h2>
+  <ul>
+    <li>Para recordar tus preferencias (como el idioma o tema)</li>
+    <li>Para análisis de tráfico (Google Analytics)</li>
+    <li>Para mejorar tu experiencia de usuario</li>
+  </ul>
+
+  <h2>Opciones</h2>
+  <p>Puedes aceptar o rechazar las cookies. También puedes eliminarlas desde la configuración de tu navegador.</p>
+
+  <p>Si tienes preguntas, contáctanos a privacidad@tusitio.com</p>
+</div>
+<main class="main-content">
+    
+</main>
+
+<!-- Footer -->
+<footer>
+    Portafolio Edgar Oviedo 2025 &mdash; Todos los derechos reservados
+</footer>
+
+<!-- Scripts -->
+<script src="{% static 'main/js/inicio.js' %}"></script>
+
+
+</body>
+</html>
+{% endblock %}

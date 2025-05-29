@@ -132,8 +132,18 @@ y sitios web funcionales.
     Portafolio Edgar Oviedo 2025 &mdash; Todos los derechos reservados
 </footer>
 
+<!-- cookies -->
+{% if not request.COOKIES.cookies_aceptadas %}
+<div id="cookie-banner" style="position: fixed; bottom: 0; width: 100%; background: #333; color: #fff; padding: 1em; text-align: center; z-index: 1000;">
+  <p>Usamos cookies para mejorar tu experiencia. ¿Aceptas nuestras cookies?</p>
+  <button onclick="aceptarCookies()" style="margin-right: 10px;">Aceptar</button>
+  <button onclick="rechazarCookies()" style="margin-right: 10px;">Rechazar</button>
+  <a href="{% url 'politica_cookies' %}" style="color: #0af;">Leer política de cookies</a>
+</div>
+{% endif %}
 <!-- Scripts -->
 <script src="{% static 'main/js/inicio.js' %}"></script>
+
 
 </body>
 </html>
