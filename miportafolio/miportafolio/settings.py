@@ -76,12 +76,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'miportafolio.wsgi.application'
 
 # Base de datos
-DATABASE_URL = os.getenv('DATABASE_URL')
+DATABASES = {dj_database_url.config(os.getenv('DATABASE_URL'))}
 
-if DATABASE_URL:
-    DATABASES = {
-        'default': dj_database_url.parse(DATABASE_URL)
-    }
 
 
 # Validación de contraseñas
