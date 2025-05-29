@@ -82,11 +82,7 @@ if DATABASE_URL:
     DATABASES = {
         'default': dj_database_url.parse(DATABASE_URL)
     }
-else:
-    print("⚠️ Advertencia: DATABASE_URL no está definida. Usando SQLite como respaldo.")
-    DATABASES = {
-        'default': dj_database_url.parse(DATABASE_URL)
-    }
+
 
 # Validación de contraseñas
 AUTH_PASSWORD_VALIDATORS = [
