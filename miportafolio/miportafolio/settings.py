@@ -76,7 +76,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'miportafolio.wsgi.application'
 
 # Base de datos
-DATABASE_URL = os.getenv('DATABASE_URL') or os.getenv('RAILWAY_DATABASE_URL')
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 if DATABASE_URL:
     DATABASES = {
@@ -85,10 +85,7 @@ if DATABASE_URL:
 else:
     print("⚠️ Advertencia: DATABASE_URL no está definida. Usando SQLite como respaldo.")
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
+        'default': dj_database_url.parse(DATABASE_URL)
     }
 
 # Validación de contraseñas
