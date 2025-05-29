@@ -76,9 +76,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'miportafolio.wsgi.application'
 
 # Base de datos
-DATABASES = {dj_database_url.config(os.getenv('DATABASE_URL'))}
+DATABASE_URL = os.getenv('DATABASE_URL') or os.getenv('RAILWAY_DATABASE_URL')
 
+if not DATABASE_URL:
+    raise Exception("❌ DATABASE_URL o RAILWAY_DATABASE_URL no están definidas. No se puede iniciar sin una base de datos PostgreSQL.")
 
+DATABASES = {
+    'default': dj_database_url.parse(DATABASE_URL)
+}
 
 # Validación de contraseñas
 AUTH_PASSWORD_VALIDATORS = [
